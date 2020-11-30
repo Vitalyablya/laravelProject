@@ -16,6 +16,7 @@ use App\Http\Controllers;
 
 // Route::get('/BDController', [Controllers\BDController::class, "main"]);
 Route::post('/exportxls', [Controllers\XlsController::class, "ImportIsFileToBd"]);
+Route::get('/BDController', [Controllers\BDController::class, "main"]);
 
 Route::get('/auth-login', function(){
     return view('auth-login');

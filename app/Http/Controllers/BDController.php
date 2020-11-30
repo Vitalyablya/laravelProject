@@ -16,32 +16,40 @@ class BDController extends Controller
     }
 
     public function main(){
-        return dd($this -> getTable());
-    }
-
-    private function getCardByID($id){
-        $table = $this -> table_obj;
-        $card = $table ->find($id);
-        return $card;
-    }
-
-    private function getTable(){
-        $table = $this -> table_obj;
-        $table = $table -> get() -> toArray();
-        return $table;
+        return dd($this -> search([['id_shopofmoney', '111111'], ['id_meshok', '111111']]));
     }
 
     public function importBd($card){
         $table = $this -> table_obj;
-        $duplicate = $table -> where('id_shopofmoney', $card['id_shopofmoney'])->first();
+        $duplicate = $table -> where([['id_shopofmoney', $card['id_shopofmoney']], ['id_ebay', $card['id_ebay']], ['id_meshok', $card['id_meshok']]])->first();
         if($duplicate) return true;
 
         $add_operation_bool = $table -> insert($card);
         return $add_operation_bool;
     }
-    
 
-    private function addCard(){
+    public function search($params){
+        $table = $this -> table_obj;
+        foreach($params as $val){
+            $table = $table -> where($val[0], $val[1]);
+        }
+        $search = $table -> get() -> toArray();
+        return $search;
+    }
+
+    public function getCardByID($id){
+        $table = $this -> table_obj;
+        $card = $table ->find($id);
+        return $card;
+    }
+    
+    public function getTable(){
+        $table = $this -> table_obj;
+        $table = $table -> get() -> toArray();
+        return $table;
+    }
+    
+    public function addCard(){
         $table = $this -> table_obj;
         $add_operation_bool = $table -> insert(
             [   'id_shopofmoney' => "111111",

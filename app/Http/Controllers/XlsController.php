@@ -10,7 +10,7 @@ class XlsController extends Controller{
 
     public function ImportIsFileToBd(Request $request){
         $patch = self::saveFile($request);
-        $import = self::saveFile($patch);
+        $import = self::exportIsFile($patch);
         
         $bd = new BDController();
 
@@ -20,32 +20,38 @@ class XlsController extends Controller{
 
     }
 
-    private static function exportIsFile($patch){
-        $lists = [];
-        @$xls = \PHPExcel_IOFactory::load('/var/www/html/workplace/laravelproject/laravelProject/storage/app/' . $patch); 
-        foreach($xls -> getWorksheetIterator() as $worksheet) {
-            $lists[] = $worksheet -> toArray();
-        }
-        
-        $title_list = $lists[0][0];
-        $array_list = array_slice($lists[0], 1);
+    private static function exportIsFile($patches){
         $import = [];
-
-        foreach($array_list as $key => $val){
-            foreach($array_list[$key] as $key_y => $val_y){
-                if(!isset($val_y) && $key_y == 0) break 2;
-                $import[$key][trim($title_list[$key_y])] = $val_y;
+        $url_arr = explode("/", __Dir__);
+        $url_patch = implode("/", array_slice($url_arr, 0, count($url_arr)-3));
+        foreach($patches as $patch){
+            $lists = [];
+            @$xls = \PHPExcel_IOFactory::load($url_patch . '/storage/app/' . $patch); 
+            foreach($xls -> getWorksheetIterator() as $worksheet) {
+                $lists[] = $worksheet -> toArray();
             }
+            
+            $title_list = $lists[0][0];
+            $array_list = array_slice($lists[0], 1);
+
+            foreach($array_list as $key => $val){
+                foreach($array_list[$key] as $key_y => $val_y){
+                    if(!isset($val_y) && $key_y == 0) break 2;
+                    $import[$key][trim($title_list[$key_y])] = $val_y;
+                }
+            }
+            Storage::delete($patch);
         }
-        Storage::delete($patch);
         return $import;
     }
 
     private static function saveFile(Request $request){
-        $f = $request->file();
-        $patch = $f-> storePublicly("xlsx");
+        $files = $request->file();
+        $patch = [];
+        foreach($files as $f){
+            $patch[] = $f-> storePublicly("xlsx");
+        }
         return $patch;
-        //self::exportIsFile($patch);
     }
 
 }
