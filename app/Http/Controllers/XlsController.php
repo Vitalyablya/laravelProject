@@ -15,7 +15,7 @@ class XlsController extends Controller{
         $bd = new BDController();
 
         foreach($import as $val){
-            $bd -> importBd($val);
+            $bd -> importToProduct($val);
         }
 
     }

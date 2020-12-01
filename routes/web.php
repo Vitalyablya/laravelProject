@@ -14,17 +14,25 @@ use App\Http\Controllers;
 |
 */
 
-// Route::get('/BDController', [Controllers\BDController::class, "main"]);
+Route::get('/', [Controllers\BDController::class, "drawTableProduct"]);
+
 Route::post('/exportxls', [Controllers\XlsController::class, "ImportIsFileToBd"]);
 
-Route::get('/auth-login', function(){
-    return view('auth-login');
-});
 Route::get('/add_product', function(){ return view('add_product');});
-Route::post('/add_product_bd', [Controllers\BDController::class, "addCard"]);
+Route::post('/add_product_bd', [Controllers\BDController::class, "addCardProduct"]);
 
-Route::get('/product-table', [Controllers\BDController::class, "drawTable"]); // product-table.blade
+Route::get('/product-table', [Controllers\BDController::class, "drawTableProduct"]);
 
-Route::get('/', function(){
-    return view('test');
+Route::get('/product-cart/{id}', [Controllers\BDController::class, "drawCartProduct"]);
+
+Route::get('/order-cart', function () {
+    return view('order-cart');
+});
+
+Route::get('/order-table', function () {
+    return view('order-table');
+});
+
+Route::get('/login', function () {
+    return view('auth-login');
 });

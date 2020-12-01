@@ -8,59 +8,38 @@ use Illuminate\Support\Facades\DB;
 class BDController extends Controller
 {   
 
-    private const TABLENAME = "test";
+    private const TABLENAME_PRODUCT = "product";
     private $table_obj;
 
-    public function __construct($table_name = self :: TABLENAME){
-        $this -> table_obj =  DB::table($table_name);
-    }
+    public function importToProduct($card){
+        $this -> table_obj =  DB::table(self::TABLENAME_PRODUCT);
 
-    public function main(){
-        return dd($this -> search([['id_shopofmoney', '111111'], ['id_meshok', '111111']]));
-    }
-
-    public function importBd($card){
         $table = $this -> table_obj;
-        $duplicate = $table -> where([['id_shopofmoney', $card['id_shopofmoney']], ['id_ebay', $card['id_ebay']], ['id_meshok', $card['id_meshok']]])->first();
+        $duplicate = $this -> checkDublicate([['id_shopofmoney', $card['id_shopofmoney']], ['id_ebay', $card['id_ebay']], ['id_meshok', $card['id_meshok']]]);  // [['id_shopofmoney', $card['id_shopofmoney']], ['id_ebay', $card['id_ebay']], ['id_meshok', $card['id_meshok']]]
         if($duplicate) return true;
 
         $add_operation_bool = $table -> insert($card);
         return $add_operation_bool;
     }
 
-    public function search($params){
-        $table = $this -> table_obj;
-        foreach($params as $val){
-            $table = $table -> where($val[0], $val[1]);
-        }
-        $search = $table -> get() -> toArray();
-        return $search;
+    public function drawTableProduct(){
+        $this -> table_obj =  DB::table(self::TABLENAME_PRODUCT);
+
+        $table = $this -> getTable();
+        return view('product-table', ['table' =>$table]);
     }
 
-    public function getCardByID($id){
+    public function drawCartProduct($id){
+        $this -> table_obj =  DB::table(self::TABLENAME_PRODUCT);
+
         $table = $this -> table_obj;
         $card = $table ->find($id);
         return $card;
     }
-
-    public function drawTable(){
-        $table = $this -> table_obj;
-        $table = $table -> get() -> toArray();
-        return view('product-table', ['table' =>$table]);
-    }
     
-    public function getTable(){
-        $table = $this -> table_obj;
-        $table = $table -> get() -> toArray();
-        return $table;
-    }
+    public function addCardProduct(Request $request){
+        $this -> table_obj =  DB::table(self::TABLENAME_PRODUCT);
 
-    private static function saveImg($img){
-        return $img-> storePublicly("img");
-
-    }
-    
-    public function addCard(Request $request){
         $input = $request -> all();
 
         unset($input['_token']);
@@ -81,6 +60,27 @@ class BDController extends Controller
 
         $table = $this -> table_obj;
         $add_operation_bool = $table -> insert($input);
+        if($add_operation_bool) 
         return $add_operation_bool;
+    }
+
+    private function checkDublicate($arr){
+        $table = $this -> table_obj;
+        return boolval($table -> where($arr)->first());
+    }
+
+    private function getTable(){
+        $table = $this -> table_obj;
+        $table = $table -> get() -> toArray();
+        return $table;
+    }
+
+    private function getProduct(){
+
+    }
+
+    private static function saveImg($img){
+        return $img-> storePublicly("img");
+
     }
 }
