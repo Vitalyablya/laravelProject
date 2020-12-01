@@ -20,10 +20,10 @@ Route::post('/exportxls', [Controllers\XlsController::class, "ImportIsFileToBd"]
 Route::get('/auth-login', function(){
     return view('auth-login');
 });
+Route::get('/add_product', function(){ return view('add_product');});
+Route::post('/add_product_bd', [Controllers\BDController::class, "addCard"]);
 
-Route::get('/product-table', function(){
-    return view('product-table');
-}); // product-table.blade
+Route::get('/product-table', [Controllers\BDController::class, "drawTable"]); // product-table.blade
 
 Route::get('/', function(){
     return view('test');

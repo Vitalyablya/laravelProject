@@ -42,25 +42,45 @@ class BDController extends Controller
         $card = $table ->find($id);
         return $card;
     }
+
+    public function drawTable(){
+        $table = $this -> table_obj;
+        $table = $table -> get() -> toArray();
+        return view('product-table', ['table' =>$table]);
+    }
     
     public function getTable(){
         $table = $this -> table_obj;
         $table = $table -> get() -> toArray();
         return $table;
     }
+
+    private static function saveImg($img){
+        return $img-> storePublicly("img");
+
+    }
     
-    public function addCard(){
+    public function addCard(Request $request){
+        $input = $request -> all();
+
+        unset($input['_token']);
+
+        $input['image_shopofmoney'] = isset($input['image_shopofmoney']) ? self::saveImg($input['image_shopofmoney']) : null;
+
+        $input['image_ebay'] = isset($input['image_ebay']) ? self::saveImg($input['image_ebay']) : null;
+
+        $input['image_meshok'] = isset($input['image_meshok']) ? self::saveImg($input['image_meshok']) : null;
+
+        $input['id_shopofmoney'] = rand();
+        $input['id_ebay'] = rand();
+        $input['id_meshok'] = rand();
+
+        $input['url_shopofmoney'] = "url".rand();
+        $input['url_ebay'] = "url".rand();
+        $input['url_meshok'] = "url".rand();
+
         $table = $this -> table_obj;
-        $add_operation_bool = $table -> insert(
-            [   'id_shopofmoney' => "111111",
-                'id_ebay' => "111111",
-                'id_meshok' => "111111",
-                'name_ru' => "Вуаля",
-                'url_shopofmoney' => "text",
-                'url_ebay' => "text",
-                'url_meshok' => "text",
-            ]
-        );
+        $add_operation_bool = $table -> insert($input);
         return $add_operation_bool;
     }
 }
