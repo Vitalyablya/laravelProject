@@ -9,14 +9,14 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="public/assets/images/favicon.ico">
 
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="public/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="public/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -35,7 +35,7 @@
                                         <div>
                                             <div class="text-center">
                                                 <div>
-                                                    <a href="index.html" class="logo"><img src="assets/images/logo-dark.png" height="20" alt="logo"></a>
+                                                    <a href="index.html" class="logo"><img src="public/assets/images/logo-dark.png" height="20" alt="logo"></a>
                                                 </div>
     
                                                 <h4 class="font-size-18 mt-4">Здравствуйте !</h4>
@@ -91,13 +91,13 @@
         
 
         <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="public/assets/libs/jquery/jquery.min.js"></script>
+        <script src="public/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="public/assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="public/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="public/assets/libs/node-waves/waves.min.js"></script>
 
-        <script src="assets/js/app.js"></script>
+        <script src="public/assets/js/app.js"></script>
 
     </body>
 </html>

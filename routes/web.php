@@ -22,6 +22,7 @@ Route::get('/add_product', function(){ return view('add_product');});
 Route::post('/add_product_bd', [Controllers\BDController::class, "addCardProduct"]);
 
 Route::get('/product-table', [Controllers\BDController::class, "drawTableProduct"]);
+Route::get('/', [Controllers\BDController::class, "drawTableProduct"]);
 
 Route::get('/product-cart/{id}', [Controllers\BDController::class, "drawCartProduct"]);
 
