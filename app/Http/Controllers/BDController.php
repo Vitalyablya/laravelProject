@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Redirector;
 
 class BDController extends Controller
 {   
@@ -29,12 +30,12 @@ class BDController extends Controller
         return view('product-table', ['table' =>$table]);
     }
 
-    public function drawCartProduct($id){
+    public function drawCartProduct(Request $request, $id){
         $this -> table_obj =  DB::table(self::TABLENAME_PRODUCT);
 
         $table = $this -> table_obj;
-        $card = $table ->find($id);
-        return $card;
+        $card = get_object_vars($table ->find($id));
+        return view('order-cart', ['card' => $card]);
     }
     
     public function addCardProduct(Request $request){
@@ -60,8 +61,17 @@ class BDController extends Controller
 
         $table = $this -> table_obj;
         $add_operation_bool = $table -> insert($input);
-        if($add_operation_bool) 
+
+        if($add_operation_bool){
+            $last_element_id = $this -> getLastElement([['id_shopofmoney', $input['id_shopofmoney']], ['id_ebay', $input['id_ebay']], ['id_meshok', $input['id_meshok']]])['id'];
+            return redirect("/product-cart/$last_element_id");
+        }
         return $add_operation_bool;
+    }
+
+    private function getLastElement($arr){
+        $table = $this -> table_obj;
+        return get_object_vars($table -> where($arr)-> first());
     }
 
     private function checkDublicate($arr){
