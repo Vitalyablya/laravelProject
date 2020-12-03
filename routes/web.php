@@ -14,8 +14,6 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', [Controllers\BDController::class, "drawTableProduct"]);
-
 Route::post('/exportxls', [Controllers\XlsController::class, "ImportIsFileToBd"]);
 
 Route::get('/add_product', function(){ return view('add_product');});
@@ -25,6 +23,7 @@ Route::get('/product-table', [Controllers\BDController::class, "drawTableProduct
 Route::get('/', [Controllers\BDController::class, "drawTableProduct"]);
 
 Route::get('/product-cart/{id}', [Controllers\BDController::class, "drawCartProduct"]);
+Route::post('/product-cart/{id}', [Controllers\BDController::class, "updateCardProduct"]);
 
 Route::get('/order-cart', function () {
     return view('order-cart');

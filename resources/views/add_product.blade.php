@@ -9,14 +9,14 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="public/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="../public/assets/images/favicon.ico">
 
         <!-- Bootstrap Css -->
-        <link href="public/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="public/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -192,7 +192,7 @@
 
                 <div class="p-4">
                     <div class="mb-2">
-                        <img src="public/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+                        <img src="../public/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
                         <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
@@ -200,7 +200,7 @@
                     </div>
     
                     <div class="mb-2">
-                        <img src="public/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+                        <img src="../public/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
                         <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css" />
@@ -208,7 +208,7 @@
                     </div>
     
                     <div class="mb-2">
-                        <img src="public/assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+                        <img src="../public/assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-5">
                         <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css" />
@@ -226,13 +226,13 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="public/assets/libs/jquery/jquery.min.js"></script>
-        <script src="public/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="public/assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="public/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="public/assets/libs/node-waves/waves.min.js"></script>   
+        <script src="../public/assets/libs/jquery/jquery.min.js"></script>
+        <script src="../public/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../public/assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="../public/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="../public/assets/libs/node-waves/waves.min.js"></script>   
 
-        <script src="public/assets/js/app.js"></script>
+        <script src="../public/assets/js/app.js"></script>
 
     </body>
 </html>

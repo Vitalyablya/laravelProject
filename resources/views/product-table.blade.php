@@ -9,20 +9,20 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="public/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="../public/assets/images/favicon.ico">
 
         <!-- DataTables -->
-        <link href="public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Responsive datatable examples -->
-        <link href="public/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />  
+        <link href="../public/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />  
 
         <!-- Bootstrap Css -->
-        <link href="public/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="public/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="../public/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -105,7 +105,7 @@
                                                             </div>
                                                         </td>
                                                         
-                                                        <td><a href="ecommerce-product-detail.html" class="text-dark font-weight-bold">{{$t->id}}</a> </td>
+                                                        <td><a href="/product-cart/{{$t->id}}" class="text-dark font-weight-bold">{{$t->id}}</a> </td>
                                                         <td>
                                                             {{$t-> name_ru}}
                                                         </td>
@@ -173,8 +173,8 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="public/assets/libs/jquery/jquery.min.js"></script>
-        <script src="public/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../public/assets/libs/jquery/jquery.min.js"></script>
+        <script src="../public/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
